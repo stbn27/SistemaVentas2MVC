@@ -88,11 +88,13 @@ public class NuevoCliente extends javax.swing.JPanel {
         btn_ModificarClie.setBackground(new java.awt.Color(102, 153, 255));
         btn_ModificarClie.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btn_ModificarClie.setForeground(new java.awt.Color(0, 0, 0));
+        btn_ModificarClie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/edit.png"))); // NOI18N
         btn_ModificarClie.setText("Modificar");
 
-        btn_ResgistrarClie.setBackground(new java.awt.Color(51, 255, 51));
+        btn_ResgistrarClie.setBackground(new java.awt.Color(102, 153, 0));
         btn_ResgistrarClie.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btn_ResgistrarClie.setForeground(new java.awt.Color(0, 0, 0));
+        btn_ResgistrarClie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/nuevo.png"))); // NOI18N
         btn_ResgistrarClie.setText("Registar");
 
         txt_NombreCliente.setForeground(new java.awt.Color(153, 153, 153));
@@ -208,6 +210,7 @@ public class NuevoCliente extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tabla_Clientes.setComponentPopupMenu(popupClientes);
         jScrollPane1.setViewportView(tabla_Clientes);
         if (tabla_Clientes.getColumnModel().getColumnCount() > 0) {
             tabla_Clientes.getColumnModel().getColumn(0).setResizable(false);

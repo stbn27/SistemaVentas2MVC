@@ -8,6 +8,8 @@ package controllers;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
@@ -23,7 +25,7 @@ import views.NuevoUsuario;
 /**
  * @author Willy Stbn
  */
-public class ClientesController implements ActionListener, MouseListener {
+public class ClientesController implements ActionListener, MouseListener, KeyListener {
 
     private Clientes clie;
     private ClienteDao clieDao;
@@ -47,6 +49,8 @@ public class ClientesController implements ActionListener, MouseListener {
         this.nClie.txt_DireccionCliente.addMouseListener(this);
         this.nClie.tabla_Clientes.addMouseListener(this);
         
+        this.nClie.txt_BuscarCliente.addKeyListener(this);
+                
         ListarLosClientes();
     }
 
@@ -97,12 +101,12 @@ public class ClientesController implements ActionListener, MouseListener {
                 clie.setTelefono(Telefeno);
                 clie.setDireccion(Direccion);
 
-                if(clieDao.RegistrarCliente(clie)){
+                if (clieDao.RegistrarCliente(clie)) {
                     LimpiarTabla();
                     ListarLosClientes();
                     JOptionPane.showMessageDialog(null, "¡¡Registro de cliente exitoso!!.");
                     LimpiarCamposCliente();
-                } else{
+                } else {
                     nClie.label_Error.setText("No se pudo guardar la informacion.");
                     nClie.label_Error.setVisible(true);
                 }
@@ -112,7 +116,7 @@ public class ClientesController implements ActionListener, MouseListener {
         } else if (e.getSource() == nClie.btn_ModificarClie) {      //Boton modificar cliente
 
             String id_CLienteText = nClie.txt_IdCliente.getText();
-            
+
             if (!id_CLienteText.equals("")) {
                 //Obtenemos el texto de los de JTextFild:
                 String nombre = nClie.txt_NombreCliente.getText().trim();
@@ -139,10 +143,10 @@ public class ClientesController implements ActionListener, MouseListener {
                     validacion++;
                 } else {
                     nClie.txt_TelefonoCliente.setForeground(Color.GREEN);
-                    if(Telefeno.length() > 12){
+                    if (Telefeno.length() > 12) {
                         nClie.label_Error.setText("Numero de telefono invalido");
                         nClie.label_Error.setVisible(true);
-                        validacion ++;
+                        validacion++;
                     }
                 }
                 if (Direccion.equals("") || Direccion.equals("Ingrese la direccion del cliente.") || Direccion.equals("Campo obligatorio")) {
@@ -161,7 +165,7 @@ public class ClientesController implements ActionListener, MouseListener {
                     clie.setDireccion(Direccion);
                     clie.setId(Integer.parseInt(id_CLienteText));
 
-                    if(clieDao.ModificarCliente(clie)){
+                    if (clieDao.ModificarCliente(clie)) {
                         LimpiarTabla();
                         ListarLosClientes();
                         JOptionPane.showMessageDialog(null, "Cliente modificado con exito");
@@ -177,21 +181,84 @@ public class ClientesController implements ActionListener, MouseListener {
                 nClie.label_Error.setText("¡Seleccione una fila de la tabla!");
                 nClie.label_Error.setVisible(true);
             }
-        } else if(e.getSource() == nClie.btn_NuevoClie){
+        } else if (e.getSource() == nClie.btn_NuevoClie) {
+            
             LimpiarCamposCliente();
+            
+        } else if (e.getSource() == nClie.opcion_Activo) {
+
+            String id_CLienteText = nClie.txt_IdCliente.getText();
+
+            if (!id_CLienteText.equals("")) {
+
+                nClie.label_Error.setVisible(false);
+                int id = Integer.parseInt(id_CLienteText);
+
+                if (clieDao.AccionTablaCliente("Activo", id)) {
+
+                    nClie.label_Error.setVisible(false);
+                    LimpiarTabla();
+                    LimpiarCamposCliente();
+                    ListarLosClientes();
+                    JOptionPane.showMessageDialog(null, "¡¡Cliente en estado de Activo exitosamente!!.");
+                } else {
+
+                    nClie.label_Error.setText("Error al modificar estado del cliente.");
+                    nClie.label_Error.setVisible(true);
+                }
+
+            } else {
+                nClie.label_Error.setText("Seleccione una cliente de la tabla.");
+                nClie.label_Error.setVisible(true);
+            }
+
+        } else if (e.getSource() == nClie.opcion_Inactivo) {
+
+            String id_CLienteText = nClie.txt_IdCliente.getText();
+
+            if (!id_CLienteText.equals("")) {
+
+                nClie.label_Error.setVisible(false);
+                int id = Integer.parseInt(id_CLienteText);
+                int opcion = JOptionPane.showConfirmDialog(null, "Estas seguro de inactivar este cliente.");
+
+                if (opcion == 0) {
+                    if (clieDao.AccionTablaCliente("Inactivo", id)) {
+
+                        nClie.label_Error.setVisible(false);
+                        LimpiarTabla();
+                        LimpiarCamposCliente();
+                        ListarLosClientes();
+                        //JOptionPane.showMessageDialog(null, "¡¡Cliente en estado de inactivo exitosamente!!.");
+                    } else {
+
+                        nClie.label_Error.setText("Error al modificar estado del cliente.");
+                        nClie.label_Error.setVisible(true);
+                        LimpiarTabla();
+                        ListarLosClientes();
+                    }
+                }
+            } else {
+                nClie.label_Error.setText("Seleccione una cliente de la tabla.");
+                nClie.label_Error.setVisible(true);
+                LimpiarCamposCliente();
+                LimpiarTabla();
+                ListarLosClientes();
+            }
         }
     }
 
     /*¨********************** Mouse **********************/
-
     @Override
     public void mouseClicked(MouseEvent e) {
 
         if (e.getSource() == nClie.txt_NombreCliente) {
+            LimpiarTabla();
+            ListarLosClientes();
             if (nClie.txt_NombreCliente.getText().equals("Ingrese el nombre del cliente.") || nClie.txt_NombreCliente.getText().equals("Campo obligatorio")) {
                 nClie.txt_NombreCliente.setForeground(Color.BLACK);
                 nClie.txt_NombreCliente.setText("");
-                nClie.label_Error.setVisible(false);
+                nClie.label_Error.setVisible(false);              
             } else {
                 nClie.txt_NombreCliente.setForeground(Color.BLACK);
             }
@@ -207,7 +274,7 @@ public class ClientesController implements ActionListener, MouseListener {
             } else {
                 nClie.txt_DireccionCliente.setForeground(Color.BLACK);
             }
-            if (nClie.txt_BuscarCliente.getText().equals("Ingrese un cliente para buscar") || nClie.txt_BuscarCliente.getText().isEmpty()) {
+            if (!nClie.txt_BuscarCliente.getText().equals("Ingrese un cliente para buscar") || nClie.txt_BuscarCliente.getText().isEmpty()) {
                 nClie.txt_BuscarCliente.setText("Ingrese un cliente para buscar");
                 nClie.txt_BuscarCliente.setForeground(new Color(0, 153, 204));
             }
@@ -233,7 +300,7 @@ public class ClientesController implements ActionListener, MouseListener {
             } else {
                 nClie.txt_DireccionCliente.setForeground(Color.BLACK);
             }
-            if (nClie.txt_BuscarCliente.getText().equals("Ingrese un cliente para buscar") || nClie.txt_BuscarCliente.getText().isEmpty()) {
+            if (!nClie.txt_BuscarCliente.getText().equals("Ingrese un cliente para buscar") || nClie.txt_BuscarCliente.getText().isEmpty()) {
                 nClie.txt_BuscarCliente.setText("Ingrese un cliente para buscar");
                 nClie.txt_BuscarCliente.setForeground(new Color(0, 153, 204));
             }
@@ -259,7 +326,7 @@ public class ClientesController implements ActionListener, MouseListener {
             } else {
                 nClie.txt_DireccionCliente.setForeground(Color.BLACK);
             }
-            if (nClie.txt_BuscarCliente.getText().equals("Ingrese un cliente para buscar") || nClie.txt_BuscarCliente.getText().isEmpty()) {
+            if (!nClie.txt_BuscarCliente.getText().equals("Ingrese un cliente para buscar") || nClie.txt_BuscarCliente.getText().isEmpty()) {
                 nClie.txt_BuscarCliente.setText("Ingrese un cliente para buscar");
                 nClie.txt_BuscarCliente.setForeground(new Color(0, 153, 204));
             }
@@ -290,7 +357,7 @@ public class ClientesController implements ActionListener, MouseListener {
                 nClie.label_Error.setVisible(false);
             }
         }
-        
+
         //Click en la tabla
         if (e.getSource() == nClie.tabla_Clientes) {
             int fila = nClie.tabla_Clientes.rowAtPoint(e.getPoint());
@@ -299,8 +366,6 @@ public class ClientesController implements ActionListener, MouseListener {
             String nombre = nClie.tabla_Clientes.getValueAt(fila, 1).toString();
             String telefono = nClie.tabla_Clientes.getValueAt(fila, 2).toString();
             String direccion = nClie.tabla_Clientes.getValueAt(fila, 3).toString();
-
-
 
             nClie.txt_IdCliente.setForeground(Color.BLACK);
             nClie.txt_IdCliente.setText(id1);
@@ -330,13 +395,13 @@ public class ClientesController implements ActionListener, MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {
     }
-    
+
     /*¨********************** Otro **********************/
     public void ListarLosClientes() {
-        
+
         Tables color = new Tables();
         nClie.tabla_Clientes.setDefaultRenderer(nClie.tabla_Clientes.getColumnClass(0), color);
-        
+
         List<Clientes> listarClientes = clieDao.ListarClientes(nClie.txt_BuscarCliente.getText().trim());
         modelo = (DefaultTableModel) nClie.tabla_Clientes.getModel();
         Object[] ob = new Object[5];
@@ -348,7 +413,6 @@ public class ClientesController implements ActionListener, MouseListener {
             ob[2] = listarClientes.get(i).getTelefono();
             ob[3] = listarClientes.get(i).getDireccion();
             ob[4] = listarClientes.get(i).getEstado();
-
 
             modelo.addRow(ob);
         }
@@ -363,24 +427,45 @@ public class ClientesController implements ActionListener, MouseListener {
     }
 
     public void LimpiarTabla() {
+        modelo = (DefaultTableModel) nClie.tabla_Clientes.getModel();
         for (int i = 0; i < modelo.getRowCount(); i++) {
             modelo.removeRow(i);
             i -= 1;
         }
     }
 
-    private void LimpiarCamposCliente(){
+    private void LimpiarCamposCliente() {
         nClie.txt_BuscarCliente.setText("Ingrese un cliente para buscar");
         nClie.txt_NombreCliente.setText("Ingrese el nombre del cliente.");
         nClie.txt_IdCliente.setText("");
         nClie.txt_DireccionCliente.setText("Ingrese la direccion del cliente.");
         nClie.txt_TelefonoCliente.setText("Ingrese el telefono del cliente.");
-        
+
         nClie.txt_NombreCliente.setForeground(Color.gray);
         nClie.txt_DireccionCliente.setForeground(Color.gray);
         nClie.txt_TelefonoCliente.setForeground(Color.gray);
-        
+
         nClie.btn_ResgistrarClie.setEnabled(true);
+    }
+    
+    /*´****************** Teclado *********************************/
+    
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        
+        if(e.getSource() == nClie.txt_BuscarCliente){
+            LimpiarTabla();
+            ListarLosClientes();
+        }
+        
     }
 
 }
