@@ -64,10 +64,10 @@ public class NuevoUsuario extends javax.swing.JPanel {
         opcion_ReingresarUsuario.setText("Activo");
         popupUsuarios.add(opcion_ReingresarUsuario);
 
-        setBackground(new java.awt.Color(255, 204, 0));
+        setBackground(new java.awt.Color(204, 204, 204));
 
         panel_Anadir.setBackground(new java.awt.Color(204, 204, 204));
-        panel_Anadir.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nuevo Usuario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 0, 12), new java.awt.Color(51, 51, 51))); // NOI18N
+        panel_Anadir.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nuevo Usuario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(51, 51, 51))); // NOI18N
         panel_Anadir.setMaximumSize(new java.awt.Dimension(450, 32767));
 
         label_NombreCliente.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
@@ -82,42 +82,63 @@ public class NuevoUsuario extends javax.swing.JPanel {
         label_DireccionCliente.setForeground(new java.awt.Color(102, 0, 102));
         label_DireccionCliente.setText("Caja:");
 
-        btn_NuevoNU.setText("Nuevo");
+        btn_NuevoNU.setBackground(new java.awt.Color(255, 255, 255));
+        btn_NuevoNU.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        btn_NuevoNU.setForeground(new java.awt.Color(0, 0, 0));
+        btn_NuevoNU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/limpiar.png"))); // NOI18N
+        btn_NuevoNU.setText("Limpiar");
 
+        btn_ModificarNU.setBackground(new java.awt.Color(255, 204, 0));
+        btn_ModificarNU.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        btn_ModificarNU.setForeground(new java.awt.Color(0, 0, 0));
+        btn_ModificarNU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/editar.png"))); // NOI18N
         btn_ModificarNU.setText("Modificar");
 
+        btn_RegistrarNU.setBackground(new java.awt.Color(0, 153, 153));
+        btn_RegistrarNU.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        btn_RegistrarNU.setForeground(new java.awt.Color(0, 0, 0));
+        btn_RegistrarNU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/guardar.png"))); // NOI18N
         btn_RegistrarNU.setText("Registar");
 
+        txt_NombreNU.setBackground(new java.awt.Color(204, 204, 204));
         txt_NombreNU.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         txt_NombreNU.setForeground(new java.awt.Color(153, 153, 153));
         txt_NombreNU.setText("Ingrese el nombre del usuario");
+        txt_NombreNU.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 102)));
 
         jLabel1.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 0, 102));
         jLabel1.setText("Usuario:");
 
+        txt_UserNU.setBackground(new java.awt.Color(204, 204, 204));
         txt_UserNU.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         txt_UserNU.setForeground(new java.awt.Color(153, 153, 153));
         txt_UserNU.setText("Ingrese el usuario");
+        txt_UserNU.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 102)));
 
         label_DireccionCliente1.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
         label_DireccionCliente1.setForeground(new java.awt.Color(102, 0, 102));
         label_DireccionCliente1.setText("Rol:");
 
+        cmb_CajaNU.setBackground(new java.awt.Color(204, 204, 204));
         cmb_CajaNU.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         cmb_CajaNU.setForeground(new java.awt.Color(0, 102, 204));
         cmb_CajaNU.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "General" }));
 
+        cmb_RolNU.setBackground(new java.awt.Color(204, 204, 204));
         cmb_RolNU.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         cmb_RolNU.setForeground(new java.awt.Color(0, 102, 204));
         cmb_RolNU.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Vendedor", "Otro" }));
 
+        txt_PassNU.setBackground(new java.awt.Color(204, 204, 204));
         txt_PassNU.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txt_PassNU.setForeground(new java.awt.Color(153, 153, 153));
         txt_PassNU.setText("12345678@");
+        txt_PassNU.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 102)));
 
-        label_Error.setFont(new java.awt.Font("Roboto Light", 0, 13)); // NOI18N
+        label_Error.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         label_Error.setForeground(new java.awt.Color(153, 0, 0));
+        label_Error.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label_Error.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/advertencia.png"))); // NOI18N
         label_Error.setText("¡¡Rellene todos los campos!!");
 
@@ -144,6 +165,7 @@ public class NuevoUsuario extends javax.swing.JPanel {
             .addGroup(panel_AnadirLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(panel_AnadirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label_Error, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panel_AnadirLayout.createSequentialGroup()
                         .addGroup(panel_AnadirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -156,7 +178,7 @@ public class NuevoUsuario extends javax.swing.JPanel {
                                 .addGroup(panel_AnadirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(label_DireccionCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cmb_RolNU, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
                     .addGroup(panel_AnadirLayout.createSequentialGroup()
                         .addComponent(label_NombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -166,8 +188,7 @@ public class NuevoUsuario extends javax.swing.JPanel {
                             .addComponent(txt_NombreNU, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_PassNU, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panel_AnadirLayout.createSequentialGroup()
-                                .addComponent(label_Error, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(txt_IdNU, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_AnadirLayout.createSequentialGroup()
                                 .addComponent(btn_NuevoNU, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
@@ -189,13 +210,15 @@ public class NuevoUsuario extends javax.swing.JPanel {
                 .addGroup(panel_AnadirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txt_BuscarUser)
                     .addComponent(label_IcoBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(label_Error)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txt_UserNU, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(label_NombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_UserNU, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(label_NombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_NombreNU, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(label_TelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -215,14 +238,11 @@ public class NuevoUsuario extends javax.swing.JPanel {
                     .addComponent(btn_RegistrarNU, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_ModificarNU, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(panel_AnadirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(label_Error)
-                    .addGroup(panel_AnadirLayout.createSequentialGroup()
-                        .addComponent(txt_IdNU)
-                        .addGap(1, 1, 1)))
-                .addGap(17, 17, 17))
+                .addComponent(txt_IdNU, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
 
+        tabla_Usuarios.setBackground(new java.awt.Color(204, 204, 204));
         tabla_Usuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

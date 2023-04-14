@@ -10,6 +10,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JPanel;
 
 
@@ -20,6 +22,7 @@ import javax.swing.JPanel;
 public class DashBoard extends javax.swing.JFrame {
 
     NuevaVenta nVenta = new NuevaVenta();   //Este es un JPanel Form
+    Date fecha = new Date();
 
     public DashBoard() {
         initComponents();
@@ -29,7 +32,8 @@ public class DashBoard extends javax.swing.JFrame {
         this.setTitle("Sistema Principal");
 
         ConfigControllers HoverMouse = new ConfigControllers(this);
-
+        
+        this.label_Fecha.setText(new SimpleDateFormat("d MMM yyyy").format(fecha));
         AbrirPanel(nVenta);
     }
 
@@ -90,6 +94,7 @@ public class DashBoard extends javax.swing.JFrame {
         btn_Buscar = new javax.swing.JButton();
         label_IcoConsultas = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        label_Fecha = new javax.swing.JLabel();
         contenedor_Panel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -115,6 +120,7 @@ public class DashBoard extends javax.swing.JFrame {
         );
 
         panel_Botones.setBackground(new java.awt.Color(204, 204, 204));
+        panel_Botones.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 2, new java.awt.Color(102, 102, 102)));
 
         panel_NuevaVenta.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -241,7 +247,7 @@ public class DashBoard extends javax.swing.JFrame {
         label_Categoria.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
         label_Categoria.setForeground(new java.awt.Color(0, 0, 0));
         label_Categoria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        label_Categoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/box.png"))); // NOI18N
+        label_Categoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/categorias.png"))); // NOI18N
         label_Categoria.setText("Categoria");
         label_Categoria.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -361,6 +367,11 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Sistema de Venta");
 
+        label_Fecha.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        label_Fecha.setForeground(new java.awt.Color(255, 255, 51));
+        label_Fecha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        label_Fecha.setText("Fecha:");
+
         javax.swing.GroupLayout panel_BannerLayout = new javax.swing.GroupLayout(panel_Banner);
         panel_Banner.setLayout(panel_BannerLayout);
         panel_BannerLayout.setHorizontalGroup(
@@ -372,25 +383,28 @@ public class DashBoard extends javax.swing.JFrame {
                 .addComponent(label_IcoConsultas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_BuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btn_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70))
+                .addGap(22, 22, 22)
+                .addGroup(panel_BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(label_Fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
+                .addGap(66, 66, 66))
         );
         panel_BannerLayout.setVerticalGroup(
             panel_BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_BannerLayout.createSequentialGroup()
-                .addGroup(panel_BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_BannerLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(panel_BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panel_BannerLayout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addGroup(panel_BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panel_BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txt_BuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btn_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(label_IcoConsultas)))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 33, Short.MAX_VALUE))
                     .addGroup(panel_BannerLayout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                        .addComponent(label_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panel_BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(label_IcoConsultas)
+                            .addComponent(txt_BuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
 
         contenedor_Panel.setBackground(new java.awt.Color(255, 153, 0));
@@ -471,6 +485,7 @@ public class DashBoard extends javax.swing.JFrame {
     public javax.swing.JLabel label_Categoria;
     public javax.swing.JLabel label_Cliente;
     public javax.swing.JLabel label_Config;
+    private javax.swing.JLabel label_Fecha;
     private javax.swing.JLabel label_Ico;
     private javax.swing.JLabel label_IcoConsultas;
     public javax.swing.JLabel label_Medidas;

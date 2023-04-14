@@ -138,7 +138,7 @@ public class ConfigControllers implements MouseListener{
             AbrirPanel(nProducto);
         } else if(e.getSource() == views.label_Provedores){
             views.txt_BuscarProducto.setText("Ingrese el nombre del producto");
-            NuevaProvedor nProveedor = new NuevaProvedor();
+            NuevoProvedor nProveedor = new NuevoProvedor();
             AbrirPanel(nProveedor);
         } else if(e.getSource() == views.label_Medidas){
             views.txt_BuscarProducto.setText("Ingrese el nombre del producto");
