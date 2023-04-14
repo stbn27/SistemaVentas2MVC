@@ -20,7 +20,7 @@ import models.ClienteDao;
 import models.Clientes;
 import models.Tables;
 import views.NuevoCliente;
-import views.NuevoUsuario;
+
 
 /**
  * @author Willy Stbn
