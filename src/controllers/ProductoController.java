@@ -13,7 +13,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.text.AttributedCharacterIterator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -701,6 +700,8 @@ public class ProductoController implements ActionListener, MouseListener, KeyLis
 
     @Override
     public void keyReleased(KeyEvent e) {
+        LimpiarTabla();
+        ListarProductos();
     }
 
     /*¨**************************** Otros ***************************/

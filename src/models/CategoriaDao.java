@@ -26,13 +26,12 @@ public class CategoriaDao {
     ResultSet rs;
     
     public boolean RegistrarCategoria(Categoria cat) {
-        String IntruccionSQL = "INSERT INTO categoria (nombre) VALUES (?)";
+        String IntruccionSQL = "INSERT INTO categoria (categoria) VALUES (?)";
 
         try {
             cn = con.getConexion();
             pst = cn.prepareStatement(IntruccionSQL);
             pst.setString(1, cat.getNombre());
-
 
             pst.execute();
             return true;
@@ -55,7 +54,7 @@ public class CategoriaDao {
         
         List<Categoria> listaCategoria = new ArrayList<>();
         String IntruccionSql = "SELECT * FROM categoria";
-        String buscarSQL = "SELECT * FROM categoria WHERE nombre LIKE '%" + valor + "%'";
+        String buscarSQL = "SELECT * FROM categoria WHERE categoria LIKE '%" + valor + "%'";
         
         try {
             cn = con.getConexion();
@@ -70,7 +69,7 @@ public class CategoriaDao {
             while(rs.next()){
                 Categoria categoria = new Categoria();
                 categoria.setId(rs.getInt("id"));
-                categoria.setNombre(rs.getString("nombre"));
+                categoria.setNombre(rs.getString("categoria"));
                 categoria.setEstado(rs.getString("estado"));
 
                 listaCategoria.add(categoria);
@@ -92,7 +91,7 @@ public class CategoriaDao {
     }
     
     public boolean ModificarCategoria(Categoria categoria) {
-        String IntruccionSQL = "UPDATE categoria SET nombre=? WHERE id=?";
+        String IntruccionSQL = "UPDATE categoria SET categoria=? WHERE id=?";
 
         try {
             cn = con.getConexion();

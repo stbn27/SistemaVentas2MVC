@@ -6,7 +6,6 @@
 
 package pruebas;
 
-import views.NuevaVenta;
 
 /**
  * @author Willy Stbn
@@ -15,10 +14,7 @@ import views.NuevaVenta;
 public class Pruebas {
     
     public static void main(String[] args) {
-        
-        NuevaVenta ns = new NuevaVenta();
-        ns.setVisible(true);
-        
+       
     }
     
 }

@@ -5,14 +5,26 @@
  */
 package views;
 
+import controllers.NCompraController;
+import models.Productos;
+import models.ProductosDao;
+
 /**
  *
  * @author Willy Stbn
  */
 public class NuevaCompra extends javax.swing.JPanel {
+    
+    Productos producto = new Productos();
+    ProductosDao productoDao = new ProductosDao();
 
     public NuevaCompra() {
         initComponents();
+        
+        NCompraController logica = new NCompraController(producto, productoDao, this);
+        
+        this.label_Error.setVisible(false);
+        this.txt_Id_NC.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -41,9 +53,12 @@ public class NuevaCompra extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         cmb_ProvedorNC = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
+        label_Error = new javax.swing.JLabel();
+        txt_Id_NC = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(153, 153, 255));
+        setBackground(new java.awt.Color(204, 204, 204));
 
+        tabla_NuevaCompra.setBackground(new java.awt.Color(204, 204, 204));
         tabla_NuevaCompra.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -135,21 +150,29 @@ public class NuevaCompra extends javax.swing.JPanel {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Provedor");
 
+        label_Error.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
+        label_Error.setForeground(new java.awt.Color(153, 0, 0));
+        label_Error.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_Error.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/advertencia.png"))); // NOI18N
+        label_Error.setText("¡¡Rellene todos los campos!!");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmb_ProvedorNC, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(label_Error, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_CantidaRNV, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -169,7 +192,8 @@ public class NuevaCompra extends javax.swing.JPanel {
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_TotalTVN, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmb_ProvedorNC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmb_ProvedorNC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label_Error))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_CambioNV, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,6 +202,8 @@ public class NuevaCompra extends javax.swing.JPanel {
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54))
         );
+
+        txt_Id_NC.setBackground(new java.awt.Color(255, 51, 51));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -208,7 +234,9 @@ public class NuevaCompra extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_TotalNC, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(136, 136, 136)
+                        .addGap(53, 53, 53)
+                        .addComponent(txt_Id_NC, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
                         .addComponent(btn_GenerarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(66, 66, 66)
@@ -230,7 +258,9 @@ public class NuevaCompra extends javax.swing.JPanel {
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_GenerarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_GenerarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_Id_NC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txt_CodigoNC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txt_DescripcionNC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -247,8 +277,8 @@ public class NuevaCompra extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_GenerarCompra;
-    private javax.swing.JComboBox<String> cmb_ProvedorNC;
+    public javax.swing.JButton btn_GenerarCompra;
+    public javax.swing.JComboBox<String> cmb_ProvedorNC;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -260,14 +290,16 @@ public class NuevaCompra extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabla_NuevaCompra;
-    private javax.swing.JTextField txt_CambioNV;
-    private javax.swing.JTextField txt_CantidaRNV;
-    private javax.swing.JTextField txt_CantidadNC;
-    private javax.swing.JTextField txt_CodigoNC;
-    private javax.swing.JTextField txt_DescripcionNC;
-    private javax.swing.JTextField txt_PrecioNC;
-    private javax.swing.JTextField txt_TotalNC;
-    private javax.swing.JTextField txt_TotalTVN;
+    public javax.swing.JLabel label_Error;
+    public javax.swing.JTable tabla_NuevaCompra;
+    public javax.swing.JTextField txt_CambioNV;
+    public javax.swing.JTextField txt_CantidaRNV;
+    public javax.swing.JTextField txt_CantidadNC;
+    public javax.swing.JTextField txt_CodigoNC;
+    public javax.swing.JTextField txt_DescripcionNC;
+    public javax.swing.JTextField txt_Id_NC;
+    public javax.swing.JTextField txt_PrecioNC;
+    public javax.swing.JTextField txt_TotalNC;
+    public javax.swing.JTextField txt_TotalTVN;
     // End of variables declaration//GEN-END:variables
 }

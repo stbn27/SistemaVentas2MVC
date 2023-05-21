@@ -24,7 +24,7 @@ public class MedidaDao {
     ResultSet rs;
 
     public boolean ResgistrarMedida(Medida md) {
-        String instruccionSQL = "INSERT INTO medidas (nombre, nombre_corto) VALUES (?,?)";
+        String instruccionSQL = "INSERT INTO medidas (medida, nombre_corto) VALUES (?,?)";
         try {
             cn = con.getConexion();
             pst = cn.prepareStatement(instruccionSQL);
@@ -63,7 +63,7 @@ public class MedidaDao {
             while(rs.next()){
                 Medida med = new Medida();
                 med.setId(rs.getInt("id"));
-                med.setNombre(rs.getString("nombre"));
+                med.setNombre(rs.getString("medida"));
                 med.setNombre_corto(rs.getString("nombre_corto"));
                 med.setEstado(rs.getString("estado"));
                 listaMedidas.add(med);
@@ -84,7 +84,7 @@ public class MedidaDao {
     }
 
     public boolean ModificarMedida(Medida med){
-        String instruccionSQL = "UPDATE medidas SET nombre=?, nombre_corto=? WHERE id=?";
+        String instruccionSQL = "UPDATE medidas SET medida=?, nombre_corto=? WHERE id=?";
         try {
             cn = con.getConexion();
             pst = cn.prepareStatement(instruccionSQL);

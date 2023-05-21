@@ -26,7 +26,7 @@ public class ProveedorDao {
     ResultSet rs;
     
     public boolean RegistrarProvedor(Proveedor prov) {
-        String IntruccionSQL = "INSERT INTO proveedor (rucc, nombre, telefono, direccion) VALUES (?,?,?,?)";
+        String IntruccionSQL = "INSERT INTO proveedor (rucc, proveedor, telefono, direccion) VALUES (?,?,?,?)";
 
         try {
             cn = con.getConexion();
@@ -57,12 +57,11 @@ public class ProveedorDao {
         
         List<Proveedor> listaProveedor = new ArrayList<>();
         String IntruccionSql = "SELECT * FROM proveedor ORDER BY estado ASC";
-        String buscarSQL = "SELECT * FROM proveedor WHERE nombre LIKE '%" + valor + "%' OR rucc LIKE '%" + valor + "%'";
+        String buscarSQL = "SELECT * FROM proveedor WHERE proveedor LIKE '%" + valor + "%' OR rucc LIKE '%" + valor + "%'";
         
         try {
             cn = con.getConexion();
-            //|| valor.equalsIgnoreCase("")
-            if(valor.equalsIgnoreCase("Ingrese un provedor para buscar")){
+            if(valor.equalsIgnoreCase("Ingrese un provedor para buscar") || valor.equalsIgnoreCase("")){
                 pst = cn.prepareStatement(IntruccionSql);
                 rs = pst.executeQuery();
             } else {
@@ -74,7 +73,7 @@ public class ProveedorDao {
                 Proveedor prov = new Proveedor();
                 prov.setId(rs.getInt("id"));
                 prov.setRucc(rs.getString("rucc"));
-                prov.setNombre(rs.getString("nombre"));
+                prov.setNombre(rs.getString("proveedor"));
                 prov.setTelefono(rs.getString("telefono"));
                 prov.setDireccion(rs.getString("direccion"));
                 prov.setEstado(rs.getString("estado"));
@@ -98,7 +97,7 @@ public class ProveedorDao {
     }
     
     public boolean ModificarProvedor(Proveedor provd) {
-        String IntruccionSQL = "UPDATE proveedor SET rucc=?, nombre=?, telefono=?, direccion=? WHERE id=?";
+        String IntruccionSQL = "UPDATE proveedor SET rucc=?, proveedor=?, telefono=?, direccion=? WHERE id=?";
 
         try {
             cn = con.getConexion();

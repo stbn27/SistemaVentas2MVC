@@ -20,7 +20,7 @@ public class Tables extends DefaultTableCellRenderer{
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column); 
-        if(table.getValueAt(row, column).toString().equals("Inactivo")){
+        if(table.getValueAt(row, column).toString().equals("Inactivo") || table.getValueAt(row, column).toString().equals("Pausado")){
             setBackground(Color.red);
             setForeground(Color.WHITE);
         } else {

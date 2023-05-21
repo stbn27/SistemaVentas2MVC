@@ -36,6 +36,7 @@ public class ProvedorController implements ActionListener, MouseListener, KeyLis
         this.provDao = provDao;
         this.nProv = nProvd;
 
+
         this.nProv.btn_ModificarProvedor.addActionListener(this);
         this.nProv.btn_NuevoProvedor.addActionListener(this);
         this.nProv.btn_ResgistrarProvedor.addActionListener(this);
@@ -50,7 +51,7 @@ public class ProvedorController implements ActionListener, MouseListener, KeyLis
         this.nProv.tabla_Provedor.addMouseListener(this);
 
         this.nProv.txt_BuscarProveedor.addKeyListener(this);
-
+        
         ListarLosProvedores();
     }
 
@@ -495,7 +496,7 @@ public class ProvedorController implements ActionListener, MouseListener, KeyLis
             }
         }
 
-        if (direccion.equals("Ingrese la direccion del proveedor") || nombre.isEmpty() || direccion.equals("Campo obligatorio")) {
+        if (direccion.equals("Ingrese la direccion del proveedor") || direccion.isEmpty() || direccion.equals("Campo obligatorio")) {
             nProv.txt_DireccionProvedor.setForeground(Color.red);
             nProv.txt_DireccionProvedor.setText("Campo obligatorio");
             validacion1++;
@@ -539,5 +540,6 @@ public class ProvedorController implements ActionListener, MouseListener, KeyLis
         }
 
     }
+
 
 }

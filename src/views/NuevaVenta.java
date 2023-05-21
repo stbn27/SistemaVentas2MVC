@@ -13,13 +13,17 @@ public class NuevaVenta extends javax.swing.JPanel {
 
     public NuevaVenta() {
         initComponents();
-
+        
+        this.txt_CodigoNV.setVisible(false);
+        
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Menu_TablaVentaNueva = new javax.swing.JPopupMenu();
+        opcionEliminar = new javax.swing.JMenuItem();
         Fondo_Panel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_NuevaVenta = new javax.swing.JTable();
@@ -45,11 +49,17 @@ public class NuevaVenta extends javax.swing.JPanel {
         jLabel19 = new javax.swing.JLabel();
         cmb_CienteNV1 = new javax.swing.JComboBox<>();
         jLabel20 = new javax.swing.JLabel();
+        label_Error = new javax.swing.JLabel();
+
+        opcionEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/eliminar.png"))); // NOI18N
+        opcionEliminar.setText("Eliminar");
+        Menu_TablaVentaNueva.add(opcionEliminar);
 
         setBackground(new java.awt.Color(204, 255, 204));
 
-        Fondo_Panel.setBackground(new java.awt.Color(0, 204, 153));
+        Fondo_Panel.setBackground(new java.awt.Color(204, 204, 204));
 
+        tabla_NuevaVenta.setBackground(new java.awt.Color(204, 204, 204));
         tabla_NuevaVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -120,24 +130,27 @@ public class NuevaVenta extends javax.swing.JPanel {
         panel_Costo.setBackground(new java.awt.Color(0, 204, 153));
 
         txt_TotalTVN1.setEditable(false);
+        txt_TotalTVN1.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
         txt_TotalTVN1.setText("$ 0.00");
 
-        jLabel17.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(153, 0, 153));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel17.setText("Total:");
 
         txt_CambioNV1.setEditable(false);
+        txt_CambioNV1.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
         txt_CambioNV1.setText("$ 0.00");
 
-        jLabel18.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(153, 0, 153));
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel18.setText("Cambio:");
 
+        txt_CantidaRNV1.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
         txt_CantidaRNV1.setText("$ 0.00");
 
-        jLabel19.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(153, 0, 153));
         jLabel19.setText("Cantidad Recibida:");
 
@@ -149,59 +162,65 @@ public class NuevaVenta extends javax.swing.JPanel {
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel20.setText("Cliente:");
 
+        label_Error.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
+        label_Error.setForeground(new java.awt.Color(153, 0, 0));
+        label_Error.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_Error.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/advertencia.png"))); // NOI18N
+        label_Error.setText("¡¡Rellene todos los campos!!");
+
         javax.swing.GroupLayout panel_CostoLayout = new javax.swing.GroupLayout(panel_Costo);
         panel_Costo.setLayout(panel_CostoLayout);
         panel_CostoLayout.setHorizontalGroup(
             panel_CostoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_CostoLayout.createSequentialGroup()
-                .addGroup(panel_CostoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(60, 60, 60)
+                .addGroup(panel_CostoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_CostoLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_CantidaRNV1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panel_CostoLayout.createSequentialGroup()
-                        .addGap(90, 90, 90)
                         .addComponent(cmb_CienteNV1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_CostoLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panel_CostoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txt_TotalTVN1)
-                    .addComponent(txt_CambioNV1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panel_CostoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label_Error, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panel_CostoLayout.createSequentialGroup()
+                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_CantidaRNV1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(32, 32, 32)))
+                .addGroup(panel_CostoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panel_CostoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txt_TotalTVN1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_CambioNV1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
-            .addGroup(panel_CostoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panel_CostoLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(887, Short.MAX_VALUE)))
         );
         panel_CostoLayout.setVerticalGroup(
             panel_CostoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_CostoLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(panel_CostoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_CostoLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
                         .addGroup(panel_CostoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_TotalTVN1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_CostoLayout.createSequentialGroup()
-                        .addComponent(cmb_CienteNV1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                            .addComponent(cmb_CienteNV1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panel_CostoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panel_CostoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label_Error)
+                            .addGroup(panel_CostoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txt_TotalTVN1, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                                .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addGap(32, 32, 32)
                 .addGroup(panel_CostoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_CambioNV1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_CambioNV1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txt_CantidaRNV1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_CantidaRNV1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54))
-            .addGroup(panel_CostoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panel_CostoLayout.createSequentialGroup()
-                    .addGap(19, 19, 19)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(132, Short.MAX_VALUE)))
+                .addGap(57, 57, 57))
         );
 
         javax.swing.GroupLayout Fondo_PanelLayout = new javax.swing.GroupLayout(Fondo_Panel);
@@ -270,7 +289,7 @@ public class NuevaVenta extends javax.swing.JPanel {
                         .addComponent(txt_TotalNV, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txt_StockNV, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panel_Costo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
@@ -291,8 +310,9 @@ public class NuevaVenta extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Fondo_Panel;
-    private javax.swing.JButton btn_GenerarVenta;
-    private javax.swing.JComboBox<String> cmb_CienteNV1;
+    private javax.swing.JPopupMenu Menu_TablaVentaNueva;
+    public javax.swing.JButton btn_GenerarVenta;
+    public javax.swing.JComboBox<String> cmb_CienteNV1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -304,16 +324,18 @@ public class NuevaVenta extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JLabel label_Error;
+    public javax.swing.JMenuItem opcionEliminar;
     private javax.swing.JPanel panel_Costo;
-    private javax.swing.JTable tabla_NuevaVenta;
-    private javax.swing.JTextField txt_CambioNV1;
-    private javax.swing.JTextField txt_CantidaRNV1;
-    private javax.swing.JTextField txt_CantidadNV;
-    private javax.swing.JTextField txt_CodigoNV;
-    private javax.swing.JTextField txt_DescripcionNV;
-    private javax.swing.JTextField txt_PrecioNV;
-    private javax.swing.JTextField txt_StockNV;
-    private javax.swing.JTextField txt_TotalNV;
-    private javax.swing.JTextField txt_TotalTVN1;
+    public javax.swing.JTable tabla_NuevaVenta;
+    public javax.swing.JTextField txt_CambioNV1;
+    public javax.swing.JTextField txt_CantidaRNV1;
+    public javax.swing.JTextField txt_CantidadNV;
+    public javax.swing.JTextField txt_CodigoNV;
+    public javax.swing.JTextField txt_DescripcionNV;
+    public javax.swing.JTextField txt_PrecioNV;
+    public javax.swing.JTextField txt_StockNV;
+    public javax.swing.JTextField txt_TotalNV;
+    public javax.swing.JTextField txt_TotalTVN1;
     // End of variables declaration//GEN-END:variables
 }
